@@ -47,7 +47,6 @@ if (!customers || customers.length === 0) {
   };
 }
 
-    console.log("customer 배열:", JSON.stringify(customer));
 
     return {
   statusCode: 200,
