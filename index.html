@@ -58,13 +58,21 @@
           return;
         }
 
-        resultDiv.innerHTML = `
-          <p><strong>선불권:</strong> ${data.prepaid_name}</p>
-          <p><strong>총 회차:</strong> ${data.total}</p>
-          <p><strong>사용 횟수:</strong> ${data.used}</p>
-          <p><strong>잔여 횟수:</strong> ${data.remain}</p>
-          <p><strong>만료일:</strong> ${data.expire}</p>
-        `;
+        let html = "";
+
+data.forEach(item => {
+  html += `
+    <div style="border:1px solid #ccc; padding:15px; margin:10px;">
+      <p><strong>선불권:</strong> ${item.prepaid_name}</p>
+      <p><strong>총 회차:</strong> ${item.total}</p>
+      <p><strong>사용 횟수:</strong> ${item.used}</p>
+      <p><strong>잔여 횟수:</strong> ${item.remain}</p>
+      <p><strong>만료일:</strong> ${item.expire}</p>
+    </div>
+  `;
+});
+
+resultDiv.innerHTML = html;
       } catch (error) {
         resultDiv.innerHTML = "서버 오류 발생";
       }

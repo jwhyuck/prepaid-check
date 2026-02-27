@@ -34,31 +34,33 @@ exports.handler = async (event) => {
       };
     }
 
-    const customer = rows.find(
-      (row) =>
-        row[0] === name &&
-        row[1] === phone
-    );
+    const customers = rows.filter(
+  (row) =>
+    row[0] === name &&
+    row[1] === phone
+);
 
-    if (!customer) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: "Customer not found" }),
-      };
-    }
+if (!customers || customers.length === 0) {
+  return {
+    statusCode: 404,
+    body: JSON.stringify({ error: "Customer not found" }),
+  };
+}
 
     console.log("customer 배열:", JSON.stringify(customer));
 
     return {
-      statusCode: 200,
-      body: JSON.stringify({
-        prepaid_name: customer[2],
-        total: customer[3],
-        used: customer[4],
-        remain: customer[5],
-        expire: customer[6],
-      }),
-    };
+  statusCode: 200,
+  body: JSON.stringify(
+    customers.map((customer) => ({
+      prepaid_name: customer[2] || "",
+      total: customer[3] || "0",
+      used: customer[4] || "0",
+      remain: customer[5] || "0",
+      expire: customer[6] || "정보 없음",
+    }))
+  ),
+};
   } catch (error) {
     return {
       statusCode: 500,
