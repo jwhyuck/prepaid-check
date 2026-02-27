@@ -47,7 +47,7 @@ exports.handler = async (event) => {
       };
     }
 
-console.log("customer 배열:", JSON.stringify(customer));
+    console.log("customer 배열:", JSON.stringify(customer));
 
     return {
       statusCode: 200,
