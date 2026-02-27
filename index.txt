@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>선불권 조회</title>
+</head>
+<body>
+  <h2>선불권 조회</h2>
+
+  <input type="text" id="name" placeholder="이름" />
+  <input type="text" id="phone" placeholder="전화번호" />
+  <button onclick="login()">조회하기</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function login() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+
+      const res = await fetch("/.netlify/functions/getCustomer", {
+        method: "POST",
+        body: JSON.stringify({ name, phone }),
+      });
+
+      const data = await res.json();
+
+      if (res.status !== 200) {
+        document.getElementById("result").innerHTML = "정보를 찾을 수 없습니다.";
+        return;
+      }
+
+      document.getElementById("result").innerHTML = `
+        <h3>${data.name} 고객님</h3>
+        <p>선불권: ${data.product}</p>
+        <p>총 회차: ${data.total}</p>
+        <p>사용 횟수: ${data.used}</p>
+        <p>잔여 횟수: ${data.remaining}</p>
+        <p>만료일: ${data.expiry}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
