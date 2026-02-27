@@ -3,44 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <title>선불권 조회</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
-      font-family: Arial;
+      font-family: 'Pretendard', Arial, sans-serif;
+      background-color: #f5f7fa;
       text-align: center;
-      margin-top: 100px;
+      margin: 0;
+      padding: 40px 20px;
     }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
     input {
-      padding: 10px;
-      margin: 5px;
-      width: 250px;
+      padding: 12px;
+      margin: 6px 0;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      box-sizing: border-box;
     }
+
     button {
-      padding: 10px 20px;
+      padding: 14px;
+      width: 100%;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #4f46e5;
+      color: white;
+      font-size: 15px;
       cursor: pointer;
+      transition: 0.2s;
     }
+
+    button:hover {
+      background-color: #4338ca;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .remain {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .low {
+      color: red;
+    }
+
+    .ok {
+      color: green;
+    }
+
+    .expire-warning {
+      color: #d97706;
+      font-weight: bold;
+    }
+
     #result {
       margin-top: 30px;
-      font-size: 18px;
+    }
+
+    .loading {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .error {
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
-  <h2>선불권 조회</h2>
+  <div class="container">
+    <h2>선불권 조회</h2>
 
-  <input type="text" id="name" placeholder="이름 입력" /><br />
-  <input type="text" id="phone" placeholder="전화번호 (01012345678)" /><br />
-  <button onclick="checkCustomer()">조회하기</button>
+    <input type="text" id="name" placeholder="이름 입력" />
+    <input type="text" id="phone" placeholder="전화번호 (01012345678)" />
+    <button onclick="checkCustomer()">조회하기</button>
 
-  <div id="result"></div>
+    <div id="result"></div>
+  </div>
 
   <script>
     async function checkCustomer() {
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
       const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "조회중...";
+
+      if (!name || !phone) {
+        resultDiv.innerHTML = '<div class="error">이름과 전화번호를 입력해주세요.</div>';
+        return;
+      }
+
+      resultDiv.innerHTML = '<div class="loading">조회중...</div>';
 
       try {
         const response = await fetch("/.netlify/functions/getCustomer", {
@@ -54,27 +138,37 @@
         const data = await response.json();
 
         if (response.status !== 200) {
-          resultDiv.innerHTML = "❌ " + data.error;
+          resultDiv.innerHTML = '<div class="error">❌ ' + data.error + '</div>';
           return;
         }
 
         let html = "";
 
-data.forEach(item => {
-  html += `
-    <div style="border:1px solid #ccc; padding:15px; margin:10px;">
-      <p><strong>선불권:</strong> ${item.prepaid_name}</p>
-      <p><strong>총 회차:</strong> ${item.total}</p>
-      <p><strong>사용 횟수:</strong> ${item.used}</p>
-      <p><strong>잔여 횟수:</strong> ${item.remain}</p>
-      <p><strong>만료일:</strong> ${item.expire}</p>
-    </div>
-  `;
-});
+        data.forEach(item => {
+          const remain = parseInt(item.remain);
+          const isLow = remain <= 2;
 
-resultDiv.innerHTML = html;
+          html += `
+            <div class="card">
+              <h3>${item.prepaid_name}</h3>
+              <p>총 회차: ${item.total}</p>
+              <p>사용 횟수: ${item.used}</p>
+
+              <div class="remain ${isLow ? "low" : "ok"}">
+                잔여 횟수: ${item.remain}
+              </div>
+
+              <p class="${isLow ? "expire-warning" : ""}">
+                만료일: ${item.expire}
+              </p>
+            </div>
+          `;
+        });
+
+        resultDiv.innerHTML = html;
+
       } catch (error) {
-        resultDiv.innerHTML = "서버 오류 발생";
+        resultDiv.innerHTML = '<div class="error">서버 오류 발생</div>';
       }
     }
   </script>
