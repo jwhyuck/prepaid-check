@@ -11,6 +11,9 @@ exports.handler = async (event) => {
       };
     }
 
+    // 하이픈 제거
+    const cleanPhone = phone.replace(/-/g, "");
+
     const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
     const auth = new google.auth.GoogleAuth({
@@ -34,32 +37,38 @@ exports.handler = async (event) => {
       };
     }
 
-    const customers = rows.filter(
-  (row) =>
-    row[0] === name &&
-    row[1] === phone
-);
+    const customers = rows.filter((row) => {
+      const sheetPhone = (row[1] || "").replace(/-/g, "");
+      return row[0] === name && sheetPhone === cleanPhone;
+    });
 
-if (!customers || customers.length === 0) {
-  return {
-    statusCode: 404,
-    body: JSON.stringify({ error: "Customer not found" }),
-  };
-}
+    if (!customers || customers.length === 0) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ error: "Customer not found" }),
+      };
+    }
 
+    // 만료일 기준 최신이 위로 정렬
+    customers.sort((a, b) => {
+      const dateA = new Date(a[6]);
+      const dateB = new Date(b[6]);
+      return dateB - dateA;
+    });
 
     return {
-  statusCode: 200,
-  body: JSON.stringify(
-    customers.map((customer) => ({
-      prepaid_name: customer[2] || "",
-      total: customer[3] || "0",
-      used: customer[4] || "0",
-      remain: customer[5] || "0",
-      expire: customer[6] || "정보 없음",
-    }))
-  ),
-};
+      statusCode: 200,
+      body: JSON.stringify(
+        customers.map((customer) => ({
+          prepaid_name: customer[2] || "",
+          total: customer[3] || "0",
+          used: customer[4] || "0",
+          remain: customer[5] || "0",
+          expire: customer[6] || "정보 없음",
+        }))
+      ),
+    };
+
   } catch (error) {
     return {
       statusCode: 500,
