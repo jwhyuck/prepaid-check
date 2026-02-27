@@ -2,100 +2,118 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>선불권 조회</title>
+  <title>SKIN&YOU 잠실점 | 선불권 조회</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
-      font-family: 'Pretendard', Arial, sans-serif;
-      background-color: #f5f7fa;
-      text-align: center;
+      font-family: 'Noto Serif KR', serif;
+      background-color: #f9f6f1;
       margin: 0;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      text-align: center;
+      color: #4a3f35;
     }
 
-    h2 {
-      margin-bottom: 30px;
-      font-size: 24px;
+    .brand {
+      margin-bottom: 40px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .brand p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #8b7e72;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 480px;
       margin: auto;
     }
 
     input {
-      padding: 12px;
-      margin: 6px 0;
+      padding: 14px;
+      margin: 8px 0;
       width: 100%;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+      border-radius: 14px;
+      border: 1px solid #e8dfd4;
       font-size: 14px;
+      background-color: #fffdfa;
       box-sizing: border-box;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #cdbba7;
     }
 
     button {
       padding: 14px;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 14px;
       border: none;
-      border-radius: 10px;
-      background-color: #4f46e5;
+      border-radius: 14px;
+      background-color: #c8b6a6;
       color: white;
       font-size: 15px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
     }
 
     button:hover {
-      background-color: #4338ca;
+      background-color: #b49e8b;
     }
 
     .card {
-      background: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      background: #fffdfa;
+      padding: 26px;
+      margin-top: 28px;
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
       text-align: left;
     }
 
     .card h3 {
-      margin: 0 0 10px 0;
+      margin: 0 0 14px 0;
+      font-weight: 500;
+      border-bottom: 1px solid #efe6db;
+      padding-bottom: 8px;
     }
 
     .remain {
       font-size: 22px;
       font-weight: bold;
-      margin-top: 12px;
+      margin-top: 16px;
     }
 
     .low {
-      color: red;
+      color: #b85c5c;
     }
 
     .ok {
-      color: green;
+      color: #7a9b76;
     }
 
     .expire-warning {
-      color: #d97706;
+      color: #c27c2c;
       font-weight: bold;
-    }
-
-    #result {
-      margin-top: 30px;
     }
 
     .loading {
       margin-top: 20px;
       font-size: 14px;
-      color: #555;
+      color: #8b7e72;
     }
 
     .error {
       margin-top: 20px;
-      color: red;
+      color: #b85c5c;
       font-weight: bold;
     }
   </style>
@@ -103,12 +121,15 @@
 
 <body>
 
-  <div class="container">
-    <h2>선불권 조회</h2>
+  <div class="brand">
+    <h1>SKIN&YOU</h1>
+    <p>잠실점 · Prepaid Pass Check</p>
+  </div>
 
+  <div class="container">
     <input type="text" id="name" placeholder="이름 입력" />
     <input type="text" id="phone" placeholder="전화번호 (01012345678)" />
-    <button onclick="checkCustomer()">조회하기</button>
+    <button onclick="checkCustomer()">선불권 조회하기</button>
 
     <div id="result"></div>
   </div>
@@ -129,9 +150,7 @@
       try {
         const response = await fetch("/.netlify/functions/getCustomer", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, phone })
         });
 
