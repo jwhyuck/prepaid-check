@@ -1,90 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8" />
+  <title>선불권 조회</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      margin: 5px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;!DOCTYPE html&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;html&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;head&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;선불권 조회&lt;/title&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>font-family: Arial;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 100px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>input {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 10px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin: 5px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>width: 250px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>button {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 10px 20px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>cursor: pointer;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>#result {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 30px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 18px;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;/head&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;body&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;선불권 조회&lt;/h2&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;input type="text" id="name" placeholder="이름 입력" /&gt;&lt;br /&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;input type="text" id="phone" placeholder="전화번호 (01012345678)" /&gt;&lt;br /&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button onclick="checkCustomer()"&gt;조회하기&lt;/button&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="result"&gt;&lt;/div&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>async function checkCustomer() {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>const name = document.getElementById("name").value;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>const phone = document.getElementById("phone").value;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>const resultDiv = document.getElementById("result");</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>resultDiv.innerHTML = "조회중...";</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>try {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>const response = await fetch("/.netlify/functions/getCustomer", {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>method: "POST",</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>headers: {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">            </span>"Content-Type": "application/json"</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>},</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>body: JSON.stringify({ name, phone })</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>});</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>const data = await response.json();</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>if (response.status !== 200) {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>resultDiv.innerHTML = "❌ " + data.error;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>return;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>resultDiv.innerHTML = `</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;선불권:&lt;/strong&gt; ${data.prepaid_name}&lt;/p&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;총 회차:&lt;/strong&gt; ${data.total}&lt;/p&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;사용 횟수:&lt;/strong&gt; ${data.used}&lt;/p&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;잔여 횟수:&lt;/strong&gt; ${data.remain}&lt;/p&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;만료일:&lt;/strong&gt; ${data.expire}&lt;/p&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>`;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>} catch (error) {</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>resultDiv.innerHTML = "서버 오류 발생";</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000; min-height: 22.0px"><span class="s1"></span><br></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;/body&gt;</span></h2>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; -webkit-text-stroke: #000000"><span class="s1">&lt;/html&gt;</span></h2>
+
+  <h2>선불권 조회</h2>
+
+  <input type="text" id="name" placeholder="이름 입력" /><br />
+  <input type="text" id="phone" placeholder="전화번호 (01012345678)" /><br />
+  <button onclick="checkCustomer()">조회하기</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function checkCustomer() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "조회중...";
+
+      try {
+        const response = await fetch("/.netlify/functions/getCustomer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, phone })
+        });
+
+        const data = await response.json();
+
+        if (response.status !== 200) {
+          resultDiv.innerHTML = "❌ " + data.error;
+          return;
+        }
+
+        resultDiv.innerHTML = `
+          <p><strong>선불권:</strong> ${data.prepaid_name}</p>
+          <p><strong>총 회차:</strong> ${data.total}</p>
+          <p><strong>사용 횟수:</strong> ${data.used}</p>
+          <p><strong>잔여 횟수:</strong> ${data.remain}</p>
+          <p><strong>만료일:</strong> ${data.expire}</p>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = "서버 오류 발생";
+      }
+    }
+  </script>
+
 </body>
 </html>
