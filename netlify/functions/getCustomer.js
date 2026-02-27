@@ -4,46 +4,57 @@ exports.handler = async (event) => {
   try {
     const { name, phone } = JSON.parse(event.body);
 
+    if (!name || !phone) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Missing name or phone" }),
+      };
+    }
+
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
     const auth = new google.auth.GoogleAuth({
-      credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
+      credentials,
       scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
 
     const sheets = google.sheets({ version: "v4", auth });
 
     const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "prepaid_data!A2:F",
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: "prepaid_data!A2:G",
     });
 
     const rows = response.data.values;
 
+    if (!rows || rows.length === 0) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ error: "No data found" }),
+      };
+    }
+
     const customer = rows.find(
       (row) =>
         row[0] === name &&
-        row[1] === phone.replace(/-/g, "")
+        row[1] === phone
     );
 
     if (!customer) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ message: "고객 정보 없음" }),
+        body: JSON.stringify({ error: "Customer not found" }),
       };
     }
-
-    const total = parseInt(customer[3]);
-    const used = parseInt(customer[4]);
-    const remaining = total - used;
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        name: customer[0],
-        product: customer[2],
-        total,
-        used,
-        remaining,
-        expiry: customer[5],
+        prepaid_name: customer[2],
+        total: customer[3],
+        used: customer[4],
+        remain: customer[5],
+        expire: customer[6],
       }),
     };
   } catch (error) {
